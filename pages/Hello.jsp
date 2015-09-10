@@ -1,20 +1,24 @@
-<%@ page contentType="text/html; charset=Shift-JIS"%>
+<%@ page contentType="text/html; charset=Windows-31J"%>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <html:html>
 <head>
-<title>Who</title>
+<title>Hello</title>
 </head>
 <html:form action="/hello">
 	<table>
-		<html:errors />
 		<tr>
-			<td>名前を入力してください<br> <html:text property="name" size="20"
-					maxlength="30" />です。
+			<td>
+				計算方法 = <bean:write name="HelloForm" property="calculateMethod" scope="request" />
 			</td>
 		</tr>
 		<tr>
-			<td><html:submit value="OK" /></td>
+			<td>
+				値1 = <bean:write name="HelloForm" property="num1" scope="request" />
+				, 値2 = <bean:write name="HelloForm" property="num2" scope="request" />
+			</td>
 		</tr>
 	</table>
+	<a href="./pages/Who.jsp">Back</a>
 </html:form>
 </html:html>
