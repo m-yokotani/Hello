@@ -10,7 +10,7 @@
 	<table>
 		<html:errors />
 		<tr>
-			<td>■計算方法を入力して下さい <br>
+			<td>■計算方法を入力して下さい 。<br>
 				<html:text property="calculateMethod" size="10" maxlength="30" />
 			</td>
 		</tr>
