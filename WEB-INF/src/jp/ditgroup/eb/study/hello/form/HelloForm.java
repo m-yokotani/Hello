@@ -19,6 +19,8 @@ public class HelloForm extends ActionForm {
 	private String calculateMethod;
 	private String num1;
 	private String num2;
+	private String error;
+	private double result;
 
 	// getterメソッド
 	public String getCalculateMethod() {
@@ -30,6 +32,12 @@ public class HelloForm extends ActionForm {
 	public String getNum2() {
 		return this.num2;
 	}
+	public String getError() {
+		return this.error;
+	}
+	public double getResult() {
+		return this.result;
+	}
 
 	// setterメソッド
 	public void setCalculateMethod(String calculateMethod) {
@@ -40,5 +48,11 @@ public class HelloForm extends ActionForm {
 	}
 	public void setNum2(String num2) {
 		this.num2 = num2;
+	}
+	public void setError(String error) {
+		this.error = error;
+	}
+	public void setResult(double result) {
+		this.result = result;
 	}
 }

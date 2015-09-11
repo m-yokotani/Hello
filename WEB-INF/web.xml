@@ -31,10 +31,6 @@
       <param-name>config</param-name>
       <param-value>/WEB-INF/struts-config.xml</param-value>
     </init-param>
-	  <init-param>
-	    <param-name>javaEncoding</param-name>
-	    <param-value>Windows-31J</param-value>
-	  </init-param>
     <load-on-startup>2</load-on-startup>
  </servlet>
 

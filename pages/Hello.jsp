@@ -3,7 +3,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean"%>
 <html:html>
 <head>
-<title>Hello</title>
+<title>Result</title>
 </head>
 <html:form action="/hello">
 	<table>

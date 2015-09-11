@@ -3,7 +3,7 @@
 <html:html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=Windows-31J">
-<title>Who</title>
+<title>Calculate</title>
 </head>
 <body>
 <html:form action="/hello">
