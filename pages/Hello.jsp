@@ -5,6 +5,7 @@
 <head>
 <title>Result</title>
 </head>
+<body>
 <html:form action="/hello">
 	<table>
 		<tr>
@@ -21,4 +22,5 @@
 	</table>
 	<a href="./pages/Who.jsp">Back</a>
 </html:form>
+</body>
 </html:html>
