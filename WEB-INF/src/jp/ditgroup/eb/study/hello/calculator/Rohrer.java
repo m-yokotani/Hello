@@ -85,7 +85,7 @@ public class Rohrer {
 			resultJudge = "‘¾‚è‰ß‚¬";
 		}
 
-		buf.append("*RohrerF”»’èŒ‹‰Ê = ");
+		buf.append("*”»’è = ");
 		buf.append(resultJudge);
 
 		// Œ‹‰Ê‚ğ•Ï”‚ÉŠi”[

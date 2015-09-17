@@ -25,6 +25,8 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
+import org.apache.struts.action.ActionMessages;
 
 /**
  * HelloAction.java
@@ -44,70 +46,75 @@ public class HelloAction extends Action {
 		response.setContentType("text/html; charset=Windows-31J");
 		request.setCharacterEncoding("Windows-31J");
 		HelloForm helloForm = (HelloForm) form;
+		// ActionErrors errors = new ActionErrors();
+		ActionMessages errors = new ActionMessages();
 
-		String error = "";
-		double result = 0.0d;
+		String calculateMethod = helloForm.getCalculateMethod();
+		String strNum1 = helloForm.getStrNum1();
+		String strNum2 = helloForm.getStrNum2();
 
 		// コンソール上にログを表示する
-		log.info(" calculateMethod = "+ helloForm.getCalculateMethod());
-		log.info(" num1 = " + helloForm.getNum1());
-		log.info(" num2 = " + helloForm.getNum2());
+		log.info(" calculateMethod = "+ calculateMethod);
+		log.info(" num1 = " + strNum1);
+		log.info(" num2 = " + strNum2);
 
-		if(!"Round".equals(helloForm.getCalculateMethod()) && !"Rohrer".equals(helloForm.getCalculateMethod()) && !"Dcm".equals(helloForm.getCalculateMethod()) && !"Lcm".equals(helloForm.getCalculateMethod())) {
+		if(!"Round".equals(calculateMethod) && !"Rohrer".equals(calculateMethod) && !"Dcm".equals(calculateMethod) && !"Lcm".equals(calculateMethod)) {
 
-			error = ("*入力値エラー：\"" + helloForm.getCalculateMethod() + "\"は計算方法にありません。入力しなおしてください");
+			errors.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.calculateMethod", calculateMethod));
+			saveErrors(request, errors);
 
-			helloForm.setError(error);
-
-			System.exit(1);
+			return (mapping.findForward("fail"));
 		}
 
 		try {
 
-			if("Round".equals(helloForm.getCalculateMethod())) {
+			if("Round".equals(calculateMethod)) {
 
 				// Roundインスタンスを生成
-				Round round = new Round(helloForm.getNum1(), helloForm.getNum2());
+				Round round = new Round(strNum1, strNum2);
 
-				result = round.result();
-				helloForm.setResult(result);
+				request.setAttribute("result", round.result());
 			}
 
-			if("Rohrer".equals(helloForm.getCalculateMethod())) {
+			if("Rohrer".equals(calculateMethod)) {
 
 				// Rohrerインスタンスを生成
-				Rohrer rohrer = new Rohrer(helloForm.getNum1(), helloForm.getNum2());
+				Rohrer rohrer = new Rohrer(strNum1, strNum2);
 
-				result = rohrer.result();
-				helloForm.setResult(result);
+				request.setAttribute("result", rohrer.result());
+				request.setAttribute("judge", rohrer.judge());
 			}
 
-			if("Dcm".equals(helloForm.getCalculateMethod())) {
+			if("Dcm".equals(calculateMethod)) {
 
 				// Dcmインスタンスを生成
-				Dcm dcm = new Dcm(helloForm.getNum1(), helloForm.getNum2());
+				Dcm dcm = new Dcm(strNum1, strNum2);
 
-				result = dcm.result();
-				helloForm.setResult(result);
+				request.setAttribute("result", dcm.result());
 			}
 
-			if("Lcm".equals(helloForm.getCalculateMethod())) {
+			if("Lcm".equals(calculateMethod)) {
 
 				// Lcmインスタンスを生成
-				Lcm lcm = new Lcm(helloForm.getNum1(), helloForm.getNum2());
+				Lcm lcm = new Lcm(strNum1, strNum2);
 
-				result = lcm.result();
-				helloForm.setResult(result);
+				request.setAttribute("result", lcm.result());
 			}
 
 		} catch (NumberFormatException e){
 
-			error = ("入力値に数値ではない値が含まれています。数値を入力して下さい。");
-			helloForm.setError(error);
+			errors.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.numberFormat"));
+			saveErrors(request, errors);
+
+			return (mapping.findForward("fail"));
+
 		} catch (ArrayIndexOutOfBoundsException e) {
 
-			error = ("入力値が足りません。入力値は2つ指定して下さい。");
-			helloForm.setError(error);
+			errors.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.arrayIndexOut"));
+			saveErrors(request, errors);
+
+			return (mapping.findForward("fail"));
+
 		}
 
 		return mapping.findForward("success");

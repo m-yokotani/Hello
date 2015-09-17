@@ -85,6 +85,7 @@
 			scope="request"
 			validate="true">
 			<forward name="success" path="/pages/Hello.jsp" />
+			<forward name="fail" path="/pages/Who.jsp" />
 		</action>
 
     <!-- sample input and input submit actions
