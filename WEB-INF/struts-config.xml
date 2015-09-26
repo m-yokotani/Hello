@@ -6,9 +6,7 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-
          http://www.apache.org/licenses/LICENSE-2.0
-
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -23,10 +21,8 @@
 <!--
      This is a blank Struts configuration file with an example
      welcome action/page and other commented sample elements.
-
      Struts Validator is configured using the factory defaults
      and is ready-to-use.
-
      NOTE: If you have a generator tool to create the corresponding Java classes
      for you, you could include the details in the "form-bean" declarations.
      Otherwise, you would only define the "form-bean" element itself, with the
@@ -85,15 +81,14 @@
 			scope="request"
 			validate="true">
 			<forward name="success" path="/pages/Hello.jsp" />
+			<forward name="fail" path="/pages/Who.jsp" />
 		</action>
 
     <!-- sample input and input submit actions
-
         <action
             path="/Input"
             type="org.apache.struts.actions.ForwardAction"
             parameter="/pages/Input.jsp"/>
-
         <action
             path="/InputSubmit"
             type="app.InputAction"
@@ -101,7 +96,6 @@
             scope="request"
             validate="true"
             input="/pages/Input.jsp"/>
-
             <action
                 path="/edit*"
                 type="app.Edit{1}Action"
@@ -109,7 +103,6 @@
                 scope="request"
                 validate="true"
                 input="/pages/Edit{1}.jsp"/>
-
     end samples -->
     </action-mappings>
 
@@ -117,6 +110,7 @@
 <!-- ======================================== Message Resources Definitions -->
 
     <message-resources parameter="MessageResources" />
+    <message-resources parameter="MessageResources_ja_JP" />
 
 
 <!-- =============================================== Plug Ins Configuration -->
@@ -145,14 +139,10 @@
 	        Specify if xml parser should validate the Tiles configuration file.
 			  true : validate. DTD should be specified in file header (default)
 			  false : no validation
-
 	  Paths found in Tiles definitions are relative to the main context.
-
       To use this plugin, download and add the Tiles jar to your WEB-INF/lib
       directory then uncomment the plugin definition below.
-
     <plug-in className="org.apache.struts.tiles.TilesPlugin" >
-
       <set-property property="definitions-config"
                        value="/WEB-INF/tiles-defs.xml" />
       <set-property property="moduleAware" value="true" />
@@ -170,4 +160,3 @@
   </plug-in>
 
 </struts-config>
-
