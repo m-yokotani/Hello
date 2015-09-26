@@ -60,7 +60,9 @@ public class HelloAction extends Action {
 
 		if(!"Round".equals(calculateMethod) && !"Rohrer".equals(calculateMethod) && !"Dcm".equals(calculateMethod) && !"Lcm".equals(calculateMethod)) {
 
-			errors.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.calculateMethod", calculateMethod));
+			ActionMessage error = new ActionMessage("errors.calculateMethod", calculateMethod);
+
+			errors.add(ActionMessages.GLOBAL_MESSAGE, error);
 			saveErrors(request, errors);
 
 			return (mapping.findForward("fail"));
@@ -73,7 +75,7 @@ public class HelloAction extends Action {
 				// Roundインスタンスを生成
 				Round round = new Round(strNum1, strNum2);
 
-				request.setAttribute("result", round.result());
+				helloForm.setResult(round.result());
 			}
 
 			if("Rohrer".equals(calculateMethod)) {
@@ -81,8 +83,8 @@ public class HelloAction extends Action {
 				// Rohrerインスタンスを生成
 				Rohrer rohrer = new Rohrer(strNum1, strNum2);
 
-				request.setAttribute("result", rohrer.result());
-				request.setAttribute("judge", rohrer.judge());
+				helloForm.setResult(rohrer.result());
+				helloForm.setJudge(rohrer.judge());
 			}
 
 			if("Dcm".equals(calculateMethod)) {
@@ -90,7 +92,7 @@ public class HelloAction extends Action {
 				// Dcmインスタンスを生成
 				Dcm dcm = new Dcm(strNum1, strNum2);
 
-				request.setAttribute("result", dcm.result());
+				helloForm.setResult(dcm.result());
 			}
 
 			if("Lcm".equals(calculateMethod)) {
@@ -98,7 +100,7 @@ public class HelloAction extends Action {
 				// Lcmインスタンスを生成
 				Lcm lcm = new Lcm(strNum1, strNum2);
 
-				request.setAttribute("result", lcm.result());
+				helloForm.setResult(lcm.result());
 			}
 
 		} catch (NumberFormatException e){

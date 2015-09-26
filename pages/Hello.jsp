@@ -13,6 +13,7 @@
 	<logic:redirect forward="fail" />
 </logic:messagesPresent>
 
+
 <html:form action="/hello">
 	<table>
 		<tr>
@@ -29,10 +30,10 @@
 		<tr>
 			<td>
 				Å°åãâ  : <br>
-				<bean:write name="result" scope="request" /><br>
+				<bean:write name="HelloForm" property="result" scope="request" /><br>
 
-				<logic:present name="judge" scope="request">
-					<bean:write name="judge" scope="request" />
+				<logic:present name="HelloForm" property="judge" scope="request">
+					<bean:write name="HelloForm" property="judge" scope="request" />
 				</logic:present>
 			</td>
 		</tr>

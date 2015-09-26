@@ -20,6 +20,9 @@ public class HelloForm extends ActionForm {
 	private String strNum1;
 	private String strNum2;
 
+	private double result;
+	private String judge;
+
 	// getterメソッド
 	public String getCalculateMethod() {
 		return this.calculateMethod;
@@ -31,6 +34,13 @@ public class HelloForm extends ActionForm {
 		return this.strNum2;
 	}
 
+	public double getResult() {
+		return this.result;
+	}
+	public String getJudge() {
+		return this.judge;
+	}
+
 	// setterメソッド
 	public void setCalculateMethod(String calculateMethod) {
 		this.calculateMethod = calculateMethod;
@@ -40,5 +50,12 @@ public class HelloForm extends ActionForm {
 	}
 	public void setStrNum2(String strNum2) {
 		this.strNum2 = strNum2;
+	}
+
+	public void setResult(double result) {
+		this.result = result;
+	}
+	public void setJudge(String judge) {
+		this.judge = judge;
 	}
 }
