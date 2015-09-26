@@ -68,6 +68,14 @@ public class HelloAction extends Action {
 			return (mapping.findForward("fail"));
 		}
 
+		if("".equals(strNum1) || "".equals(strNum2)) {
+
+			errors.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.arrayIndexOut"));
+			saveErrors(request, errors);
+
+			return (mapping.findForward("fail"));
+		}
+
 		try {
 
 			if("Round".equals(calculateMethod)) {
@@ -106,13 +114,6 @@ public class HelloAction extends Action {
 		} catch (NumberFormatException e){
 
 			errors.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.numberFormat"));
-			saveErrors(request, errors);
-
-			return (mapping.findForward("fail"));
-
-		} catch (ArrayIndexOutOfBoundsException e) {
-
-			errors.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage("errors.arrayIndexOut"));
 			saveErrors(request, errors);
 
 			return (mapping.findForward("fail"));

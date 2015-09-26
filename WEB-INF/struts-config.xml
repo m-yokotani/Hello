@@ -118,7 +118,7 @@
 <!-- ======================================== Message Resources Definitions -->
 
     <message-resources parameter="MessageResources" />
-    <message-resources parameter="MessageResources_ja" />
+    <message-resources parameter="MessageResources_ja_JP" />
 
 
 <!-- =============================================== Plug Ins Configuration -->
